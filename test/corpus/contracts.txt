@@ -1,0 +1,108 @@
+==================
+Simple contract
+==================
+
+contract Treasury {
+    state balance: u64;
+}
+
+---
+
+(source_file
+  (contract_declaration
+    name: (identifier)
+    (state_declaration
+      name: (identifier)
+      type: (type_expression
+        (type_identifier)))))
+
+==================
+Contract with function
+==================
+
+contract Token {
+    fn transfer(to: Address, amount: u64) {
+        return;
+    }
+}
+
+---
+
+(source_file
+  (contract_declaration
+    name: (identifier)
+    (function_declaration
+      name: (identifier)
+      (parameter_list
+        (parameter
+          name: (identifier)
+          type: (type_expression
+            (type_identifier)))
+        (parameter
+          name: (identifier)
+          type: (type_expression
+            (type_identifier))))
+      body: (block
+        (return_statement)))))
+
+==================
+Contract with table and event
+==================
+
+contract Ledger {
+    table balances: Map<Address, u64>;
+    event Transfer(from: Address, to: Address);
+}
+
+---
+
+(source_file
+  (contract_declaration
+    name: (identifier)
+    (table_declaration
+      name: (identifier)
+      type: (type_expression
+        (type_identifier)
+        (type_arguments
+          (type_expression
+            (type_identifier))
+          (type_expression
+            (type_identifier)))))
+    (event_declaration
+      name: (identifier)
+      (event_parameter_list
+        (event_parameter
+          name: (identifier)
+          type: (type_expression
+            (type_identifier)))
+        (event_parameter
+          name: (identifier)
+          type: (type_expression
+            (type_identifier)))))))
+
+==================
+Function with qualifiers
+==================
+
+contract Test {
+    fn getData() view -> u64 {
+        return 42;
+    }
+}
+
+---
+
+(source_file
+  (contract_declaration
+    name: (identifier)
+    (function_declaration
+      name: (identifier)
+      (function_qualifier)
+      (return_type
+        (type_expression
+          (type_identifier)))
+      body: (block
+        (return_statement
+          (primary_expression
+            (literal
+              (integer_literal))))))))

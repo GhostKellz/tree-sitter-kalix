@@ -1,0 +1,19 @@
+// Example Kalix smart contract for testing
+contract Treasury {
+    state balance: u64;
+    table deposits: Map<Address, u64>;
+    event Deposit(from: Address, amount: u64);
+
+    fn deposit(amount: u64) payable {
+        let mut total = amount;
+        state.balance = state.balance + total;
+    }
+
+    fn withdraw(amount: u64) view {
+        return;
+    }
+
+    fn getBalance() view -> u64 {
+        return state.balance;
+    }
+}

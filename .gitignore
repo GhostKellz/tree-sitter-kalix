@@ -1,7 +1,23 @@
-.zig-cache/
-zig-out/
-*.o
-*.exe
-CLAUDE.md
-TODO.md
-DEVELOPMENT_ROADMAP.md
+# Node
+node_modules/
+npm-debug.log
+*.log
+
+# Build outputs
+build/
+*.node
+
+# Tree-sitter
+src/grammar.json
+src/node-types.json
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
